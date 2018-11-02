@@ -1,0 +1,31 @@
+#kit-add-position{
+    width: 100%;
+}
+.kit-flex-end{
+    display: flex;
+    align-items: flex-end;
+}
+.kit-flex-center{
+    display: flex;
+    align-items: center;
+}
+.delete{
+    width: 100%;
+}
+.kit-submit-block{
+    width: 100%;
+    height: 100px;
+    background: #f2f2f2;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    padding: 35px;
+    text-align: center;
+}
+.kit-submit-button{
+    margin: 0 auto;
+    width: 50%;
+}
+.kit-cost{
+    font-size: 25px;
+    color: #00a65a;
+}
