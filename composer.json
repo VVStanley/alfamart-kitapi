@@ -10,7 +10,7 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelrus/sleepingowl": "5.6.*",
-        "wstanley/kitapi": "dev-dev"
+        "wstanley/kitapi": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

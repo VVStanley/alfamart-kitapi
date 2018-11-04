@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7b21850add9cd268b3bf0fcee5c649e",
+    "content-hash": "f8f1fcc3e70f845af0b87b7bb524d59e",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -3787,16 +3787,16 @@
         },
         {
             "name": "wstanley/kitapi",
-            "version": "dev-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VVStanley/laravel-kit-api.git",
-                "reference": "bd373647f813d1eec7ccecd11cd607a59d06eecf"
+                "reference": "1fda8bc9948c4b6339ab5aad8d889ae910064d45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VVStanley/laravel-kit-api/zipball/bd373647f813d1eec7ccecd11cd607a59d06eecf",
-                "reference": "bd373647f813d1eec7ccecd11cd607a59d06eecf",
+                "url": "https://api.github.com/repos/VVStanley/laravel-kit-api/zipball/1fda8bc9948c4b6339ab5aad8d889ae910064d45",
+                "reference": "1fda8bc9948c4b6339ab5aad8d889ae910064d45",
                 "shasum": ""
             },
             "require": {
@@ -3829,7 +3829,7 @@
                 }
             ],
             "description": "api KIT",
-            "time": "2018-10-30T01:38:12+00:00"
+            "time": "2018-11-04T06:32:20+00:00"
         }
     ],
     "packages-dev": [
