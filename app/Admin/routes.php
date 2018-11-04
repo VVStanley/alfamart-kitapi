@@ -20,9 +20,9 @@ Route::post('/kit/calculate', ['as' => 'admin.kit.calculate', function (\App\Htt
     return AdminSection::view(\App\Http\Controllers\Kit\Calculate::calculate($request), 'ТК КИТ');
 }]);
 
-Route::get('/kit/order/first', ['as' => 'admin.kit.order.first', function () {
+Route::get('/kit/order/second', ['as' => 'admin.kit.order.second', function () {
 
-    return AdminSection::view(\App\Http\Controllers\Kit\Order\FirstController::index(), 'ТК КИТ');
+    return AdminSection::view(\App\Http\Controllers\Kit\Order\SecondController::index(), 'ТК КИТ');
 }]);
 
 

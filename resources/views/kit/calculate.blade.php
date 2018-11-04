@@ -292,7 +292,7 @@
                 <div class="col-md-6">
                     @if (isset($cost))
                         <div class="kit-submit-block">
-                            <a href="{{ route('admin.kit.order.first') }}"
+                            <a href="{{ route('admin.kit.order.second') }}"
                                class="btn btn-success kit-submit-button">Оформить</a>
                         </div>
                     @endif

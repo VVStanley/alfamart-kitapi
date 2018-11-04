@@ -21,25 +21,21 @@ class Calculate extends Controller
 
     public static function calculate(CalculateRequest $request)
     {
-//        dd($request->all());
-
+        $data = $request->all();
         $service = new KitService();
 
-        $response = $service->calculate($request->all())->standart();
+        $response = $service->calculate($data)->calculateResult();
 
-//        dd($response);
+        $data['dispatch_address_code'] = $response->dispatch_address('standart')->code;
 
-        session(['response' => $response, 'request' => $request->all()]);
-
-//        dd(session('response'), session('request'));
+        session(['response' => $response, 'request' => $data]);
 
         return view('kit.calculate', [
 
             'cities' => $service->cityTdd()->all(),
             'currencies' => $service->currency()->all(),
             'insurance' => $service->insurance()->agent(),
-            'cost' => $response->cost,
+            'cost' => $response->error ? $response->error : $response->cost('standart'),
         ]);
-
     }
 }
