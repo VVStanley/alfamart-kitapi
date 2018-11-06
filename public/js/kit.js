@@ -89,6 +89,6 @@ $(document).ready(function() {
 
             $('#have_doc').prop('checked', true);
         }
-    })
+    });
 
 });

@@ -26,7 +26,8 @@ class Calculate extends Controller
 
         $response = $service->calculate($data)->calculateResult();
 
-        $data['dispatch_address_code'] = $response->dispatch_address('standart')->code;
+        $data['dispatch_address_code'] = isset($response->dispatch_address('standart')->code)
+            ? $response->dispatch_address('standart')->code : false;
 
         session(['response' => $response, 'request' => $data]);
 
@@ -35,7 +36,7 @@ class Calculate extends Controller
             'cities' => $service->cityTdd()->all(),
             'currencies' => $service->currency()->all(),
             'insurance' => $service->insurance()->agent(),
-            'cost' => $response->error ? $response->error : $response->cost('standart'),
+            'response' => $response  // ->error ? $response->error : $response->cost('standart'),
         ]);
     }
 }

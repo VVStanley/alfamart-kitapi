@@ -166,7 +166,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-element-select">
-                        <label for="insurance_agent_code" class="control-label">Страховая компания 8001468510</label>
+                        <label for="insurance_agent_code" class="control-label">Страховая компания</label>
                         <select id="insurance_agent_code" name="insurance_agent_code" class="form-control">
                             @forelse($insurance as $item)
                                 <option value="{{ $item->code }}"
@@ -276,24 +276,22 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
-                    @if (isset($cost))
-                        <p class="lead text-center">Стоимость доставки: <span class="kit-cost">{{ $cost }}</span></p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-6">
                     <div class="kit-submit-block">
                         <button type="submit" class="btn btn-success kit-submit-button">Расчитать</button>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    @if (isset($cost))
+                    @if (isset($response))
                         <div class="kit-submit-block">
-                            <a href="{{ route('admin.kit.order.second') }}"
-                               class="btn btn-success kit-submit-button">Оформить</a>
+                            @if(isset($response->error))
+                                <span class="kit-error">{{ $response->error }}</span>
+                            @else
+                                <a href="{{ route('admin.kit.customer.index') }}"
+                                   class="btn btn-success kit-submit-button">
+                                    Цена - {{ $response->cost('standart') }} / Оформить
+                                </a>
+                            @endif
                         </div>
                     @endif
                 </div>
