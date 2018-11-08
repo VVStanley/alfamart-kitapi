@@ -20,6 +20,14 @@ class SenderController extends Controller
 
     public static function post(SenderRequest $request)
     {
-        dd($request->all());
+        $data = $request->all();
+
+        unset($data['_token']);
+
+        $data['debitor_type'] = key($data['debitor_type']);
+
+        session(['request.sender' => $data]);
+
+        return redirect()->route('admin.kit.pickup.index');
     }
 }

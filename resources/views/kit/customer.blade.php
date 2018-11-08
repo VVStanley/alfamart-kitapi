@@ -4,7 +4,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    <p class="lead text-center">2 шаг - Заказчик</p>
+                    <p class="lead text-center">Заказчик</p>
                 </div>
             </div>
             <div class="row kit-flex-end mb-1">

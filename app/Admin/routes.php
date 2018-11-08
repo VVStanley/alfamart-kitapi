@@ -38,6 +38,25 @@ Route::post('/kit/order/sender', ['as' => 'admin.kit.sender.post', function (\Ap
     return AdminSection::view(\App\Http\Controllers\Kit\SenderController::post($request), 'ТК КИТ');
 }]);
 
+Route::get('/kit/order/pickup', ['as' => 'admin.kit.pickup.index', function () {
+
+    return AdminSection::view(\App\Http\Controllers\Kit\PickupController::index(), 'ТК КИТ');
+}]);
+
+Route::post('/kit/order/pickup', ['as' => 'admin.kit.pickup.post', function (\App\Http\Requests\PickupRequest $request) {
+
+    return AdminSection::view(\App\Http\Controllers\Kit\PickupController::post($request), 'ТК КИТ');
+}]);
+
+Route::get('/kit/order/delivery', ['as' => 'admin.kit.delivery.index', function () {
+
+    return AdminSection::view(\App\Http\Controllers\Kit\DeliveryController::index(), 'ТК КИТ');
+}]);
+
+Route::post('/kit/order/delivery', ['as' => 'admin.kit.delivery.post', function (\App\Http\Requests\DeliveryRequest $request) {
+
+    return AdminSection::view(\App\Http\Controllers\Kit\DeliveryController::post($request), 'ТК КИТ');
+}]);
 
 
 

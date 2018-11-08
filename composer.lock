@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "f8f1fcc3e70f845af0b87b7bb524d59e",
@@ -3791,12 +3791,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VVStanley/laravel-kit-api.git",
-                "reference": "1fda8bc9948c4b6339ab5aad8d889ae910064d45"
+                "reference": "f385dd27a6bb52dd55540ce70d00492679f6367a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VVStanley/laravel-kit-api/zipball/1fda8bc9948c4b6339ab5aad8d889ae910064d45",
-                "reference": "1fda8bc9948c4b6339ab5aad8d889ae910064d45",
+                "url": "https://api.github.com/repos/VVStanley/laravel-kit-api/zipball/f385dd27a6bb52dd55540ce70d00492679f6367a",
+                "reference": "f385dd27a6bb52dd55540ce70d00492679f6367a",
                 "shasum": ""
             },
             "require": {
@@ -3829,7 +3829,7 @@
                 }
             ],
             "description": "api KIT",
-            "time": "2018-11-04T06:32:20+00:00"
+            "time": "2018-11-06T23:14:22+00:00"
         }
     ],
     "packages-dev": [
