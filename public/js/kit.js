@@ -18,7 +18,6 @@ $(document).ready(function() {
         position.find('input').val('');
 
         $('.number').val(parseInt(number) + 1);
-
         $('#kit-position').after(position);
     });
 
@@ -32,7 +31,6 @@ $(document).ready(function() {
             number = input.val();
 
         $('#kit-position' + (parseInt(number) - 1)).remove();
-
         input.val((parseInt(number) - 1));
     });
 
@@ -42,20 +40,15 @@ $(document).ready(function() {
     $('#declared_price').keyup(function () {
 
         if (parseInt($(this).val()) >= 1000) {
-
             $('#insurance').prop('checked', true);
             $('#insurance_agent_code').attr('disabled', false);
         } else {
-
             $('#insurance').prop('checked', false);
             $('#insurance_agent_code').attr('disabled', true);
         }
-
         if (parseInt($(this).val()) >= 50000) {
-
             $('#have_doc').prop('checked', true);
         } else {
-
             $('#have_doc').prop('checked', false);
         }
     });
@@ -66,15 +59,11 @@ $(document).ready(function() {
     $('#insurance').click(function () {
 
         if ($(this).prop('checked')) {
-
             $('#insurance_agent_code').attr('disabled', false);
         } else {
-
             $('#insurance_agent_code').attr('disabled', true);
         }
-
         if (parseInt($('#declared_price').val()) >= 1000) {
-
             $('#insurance').prop('checked', true);
             $('#insurance_agent_code').attr('disabled', false);
         }
@@ -84,11 +73,40 @@ $(document).ready(function() {
         нажатие документы
     */
     $('#have_doc').click(function () {
-
         if (parseInt($('#declared_price').val()) >= 50000) {
-
             $('#have_doc').prop('checked', true);
         }
     });
+
+    /*
+            Забор груза
+     */
+    $('#pickup_r-no').click(function () {
+        $('.pickup_r-address input').attr('disabled', 'disabled');
+        $('.pickup_r-address').hide();
+    });
+
+    $('#pickup_r-yes').click(function () {
+        $('.pickup_r-address input').removeAttr('disabled');
+        $('.pickup_r-address').show();
+    });
+
+    /*
+            получатль
+     */
+    $('#receiver-no').click(function () {
+
+        $('.receiver').find('input, select').each(function () {
+            $(this).attr('disabled', 'disabled')
+        }).hide();
+    });
+
+    $('#receiver-yes').click(function () {
+
+        $('.receiver').find('input, select').each(function () {
+            $(this).removeAttr('disabled')
+        }).show();
+    });
+
 
 });

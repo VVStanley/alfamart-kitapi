@@ -127,7 +127,7 @@
                 <div class="col-md-4">
                     <div class="form-group form-element-text ">
                         <label for="legal_supp" class="control-label">Корпус</label>
-                        <input id="legal_supp" name="legal_supp" type="text" value="Корпус" class="form-control">
+                        <input id="legal_supp" name="legal_supp" type="text" class="form-control">
                     </div>
                 </div>
                 <div class="col-md-4">

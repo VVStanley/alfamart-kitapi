@@ -14,6 +14,20 @@ class PickupController extends Controller
 
     public static function post(PickupRequest $request)
     {
-        dd($request->all());
+        $data = $request->all();
+
+        unset($data['_token']);
+
+        if (!$data['pick_up']) {
+
+            $data = [];
+            session(['request.pick_up' => $data]);
+        } else {
+
+            unset($data['pick_up']);
+            session(['request.pick_up' => $data]);
+        }
+
+        return redirect()->route('admin.kit.receiver.index');
     }
 }
