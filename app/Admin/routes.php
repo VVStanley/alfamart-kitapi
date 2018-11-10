@@ -56,5 +56,13 @@ Route::post('/kit/order/delivery', ['as' => 'admin.kit.delivery.post', function 
     return AdminSection::view(\App\Http\Controllers\Kit\DeliveryController::post($request), 'ТК КИТ');
 }]);
 
+Route::get('/kit/order/additional', ['as' => 'admin.kit.additional.index', function () {
+    return AdminSection::view(\App\Http\Controllers\Kit\AdditionalController::index(), 'ТК КИТ');
+}]);
+
+Route::post('/kit/order/additional', ['as' => 'admin.kit.additional.post', function (\App\Http\Requests\AdditionalRequest $request) {
+    return AdminSection::view(\App\Http\Controllers\Kit\AdditionalController::post($request), 'ТК КИТ');
+}]);
+
 
 

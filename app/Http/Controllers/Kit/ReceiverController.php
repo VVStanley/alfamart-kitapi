@@ -20,6 +20,15 @@ class ReceiverController extends Controller
 
     public static function post(ReceiverRequest $request)
     {
-        dd($request->all());
+        $data = $request->all();
+
+        if ($data['receiver'] == '0') {
+            session(['request.receiver' => session('request.customer')]);
+            return redirect()->route('admin.kit.additional.index');
+        }
+
+        unset($data['receiver'], $data['_token']);
+        session(['request.receiver' => $data]);
+        return redirect()->route('admin.kit.additional.index');
     }
 }
