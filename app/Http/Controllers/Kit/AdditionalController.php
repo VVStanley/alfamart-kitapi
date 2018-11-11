@@ -20,6 +20,14 @@ class AdditionalController extends Controller
 
     public static function post(AdditionalRequest $request)
     {
-        dd($request->all());
+        $data = $request->all();
+
+        unset($data['_token']);
+
+        array_filter($data, function ($value, $key) {
+            session(['request.' . $key => $value]);
+        }, ARRAY_FILTER_USE_BOTH);
+
+        return redirect()->route('admin.kit.confirmation.index');
     }
 }

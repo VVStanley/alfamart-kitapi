@@ -64,5 +64,10 @@ Route::post('/kit/order/additional', ['as' => 'admin.kit.additional.post', funct
     return AdminSection::view(\App\Http\Controllers\Kit\AdditionalController::post($request), 'ТК КИТ');
 }]);
 
+Route::get('/kit/order/confirmation', ['as' => 'admin.kit.confirmation.index', function () {
+    return AdminSection::view(\App\Http\Controllers\Kit\ConfirmationController::index(), 'ТК КИТ');
+}]);
 
-
+Route::post('/kit/order/confirmation', ['as' => 'admin.kit.confirmation.post', function (\App\Http\Requests\ConfirmationRequest $request) {
+    return AdminSection::view(\App\Http\Controllers\Kit\ConfirmationController::post($request), 'ТК КИТ');
+}]);
