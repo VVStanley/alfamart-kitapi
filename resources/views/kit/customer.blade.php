@@ -23,6 +23,11 @@
                             <option>что-то пошло не так</option>
                         @endforelse
                     </select>
+                    @if($errors->has('country_code'))
+                        <ul class="form-element-errors">
+                            <li>Обязательное поле</li>
+                        </ul>
+                    @endif
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-element-checkbox mt-2">
@@ -31,6 +36,11 @@
                                 <input name="debitor_type[3]" type="checkbox" checked="checked">
                                 Юридическое лицо
                             </label>
+                            @if($errors->has('debitor_type'))
+                                <ul class="form-element-errors">
+                                    <li>Обязательное поле</li>
+                                </ul>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -46,12 +56,22 @@
                     <div class="form-group form-element-text ">
                         <label for="name_ur" class="control-label">ФИО контактного лица</label>
                         <input id="name_ur" name="name_ur" type="text" value="Тюлькин Вадим Валерьевич" class="form-control">
+                        @if($errors->has('name_ur'))
+                            <ul class="form-element-errors">
+                                <li>Обязательное поле</li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-element-text ">
                         <label for="phone_ur" class="control-label">Телефон контактного лица</label>
                         <input id="phone_ur" name="phone_ur" type="text" value="+79126060120" class="form-control">
+                        @if($errors->has('phone_ur'))
+                            <ul class="form-element-errors">
+                                <li>Обязательное поле</li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -60,12 +80,22 @@
                     <div class="form-group form-element-text ">
                         <label for="organization_name_ur" class="control-label">Название организации</label>
                         <input id="organization_name_ur" name="organization_name_ur" type="text" value="ООО 'Альфамарт 24'" class="form-control">
+                        @if($errors->has('organization_name_ur'))
+                            <ul class="form-element-errors">
+                                <li>Обязательное поле</li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-element-text ">
                         <label for="organization_phone_ur" class="control-label">Телефон организации</label>
                         <input id="organization_phone_ur" name="organization_phone_ur" type="text" value="+79126060120" class="form-control">
+                        @if($errors->has('organization_phone_ur'))
+                            <ul class="form-element-errors">
+                                <li>Обязательное поле</li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -74,6 +104,11 @@
                     <div class="form-group form-element-text ">
                         <label for="inn_ur" class="control-label">ИНН</label>
                         <input id="inn_ur" name="inn_ur" type="text" value="6670313820" class="form-control">
+                        @if($errors->has('inn_ur'))
+                            <ul class="form-element-errors">
+                                <li>Обязательное поле</li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -103,17 +138,32 @@
                             <option>что-то пошло не так</option>
                         @endforelse
                     </select>
+                    @if($errors->has('legal_country'))
+                        <ul class="form-element-errors">
+                            <li>Обязательное поле</li>
+                        </ul>
+                    @endif
                 </div>
                 <div class="col-md-4">
                     <div class="form-group form-element-text ">
                         <label for="legal_city" class="control-label">Город</label>
                         <input id="legal_city" name="legal_city" type="text" value="Екатеринбург" class="form-control">
+                        @if($errors->has('legal_city'))
+                            <ul class="form-element-errors">
+                                <li>Обязательное поле</li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group form-element-text ">
                         <label for="legal_street" class="control-label">Улица</label>
                         <input id="legal_street" name="legal_street" type="text" value="Учителей" class="form-control">
+                        @if($errors->has('legal_street'))
+                            <ul class="form-element-errors">
+                                <li>Обязательное поле</li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -122,6 +172,11 @@
                     <div class="form-group form-element-text ">
                         <label for="legal_house" class="control-label">Дом</label>
                         <input id="legal_house" name="legal_house" type="text" value="24" class="form-control">
+                        @if($errors->has('legal_house'))
+                            <ul class="form-element-errors">
+                                <li>Обязательное поле</li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-4">

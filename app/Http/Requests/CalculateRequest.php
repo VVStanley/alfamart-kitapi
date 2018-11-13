@@ -27,9 +27,9 @@ class CalculateRequest extends FormRequest
         return [
             'city_pickup_code'   => 'Выберете откуда',
             'city_delivery_code' => 'Выберите куда',
-            'count_place.*'       => 'обязательно',
-            'weight.*'            => 'обязательно',
-            'volume.*'            => 'обязательно',
+            'count_place.*'      => 'обязательно',
+            'weight.*'           => 'обязательно',
+            'volume.*'           => 'обязательно',
             'declared_price'     => 'Введите стоимость',
         ];
     }
