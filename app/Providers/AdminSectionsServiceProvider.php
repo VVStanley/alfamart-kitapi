@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-
-use Illuminate\Routing\Router;
-use SleepingOwl\Admin\Contracts\Template\MetaInterface;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 
 class AdminSectionsServiceProvider extends ServiceProvider
@@ -14,7 +11,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $sections = [
-        //\App\User::class => 'App\Http\Sections\Users',
+        \App\Models\KitOrder::class => 'App\Admin\Http\Sections\KitOrder',
     ];
 
     /**

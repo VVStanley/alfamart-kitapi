@@ -17,7 +17,7 @@
                                 @if($country->code == 'RU')
                                     selected="selected"
                                 @endif
-                                    
+
                             >{{ $country->name }}</option>
                         @empty
                             <option>что-то пошло не так</option>
