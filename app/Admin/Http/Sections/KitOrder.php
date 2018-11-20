@@ -57,10 +57,7 @@ class KitOrder extends Section implements Initializable
     {
         $service = new KitService();
 
-        $city = [];
-        foreach ($service->cityTdd()->all() as $item) {
-            $city[$item->code] = $item->name;
-        }
+        $cities = $service->cityTdd()->cities();
 
         $form = \AdminForm::form();
 
@@ -70,18 +67,22 @@ class KitOrder extends Section implements Initializable
             [
                 new FormElements(['<div class="text-center lead">Расчет стоимости</div>']),
                 \AdminFormElement::columns()
-                    ->addColumn(function () use ($city) {
+                    ->addColumn(function () use ($cities) {
                         return [
-                            \AdminFormElement::select('city_pickup_code', 'откуда', $city),
+                            \AdminFormElement::select('city_pickup_code', 'откуда', $cities),
                         ];
                     })
-                    ->addColumn(function () use ($city) {
+                    ->addColumn(function () use ($cities) {
                         return [
-                            \AdminFormElement::select('city_delivery_code', 'откуда', $city),
+                            \AdminFormElement::select('city_delivery_code', 'откуда', $cities),
                         ];
                     }),
+                new FormElements(['<hr><div class="text-center lead">Укажите параметры мест</div>']),
+
             ]
         );
+
+
 
         return $form;
     }
