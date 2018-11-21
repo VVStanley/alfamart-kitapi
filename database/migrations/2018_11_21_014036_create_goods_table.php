@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKitOrdersTable extends Migration
+class CreateGoodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateKitOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('kit_orders', function (Blueprint $table) {
+        Schema::create('goods', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('city_pickup_code');
-            $table->string('city_delivery_code');
+            $table->string('brand');
+            $table->string('products');
             $table->float('price', 8, 2);
-            $table->string('customer');
-            $table->string('sender');
-            $table->string('receiver');
-            $table->string('sale_number');
-            $table->string('cargo_number');
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ class CreateKitOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kit_orders');
+        Schema::dropIfExists('goods');
     }
 }
