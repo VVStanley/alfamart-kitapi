@@ -1,12 +1,18 @@
 <?php
 
-namespace App\Admin\Http\Sections;
+namespace Admin\Http\Sections;
 
+use SleepingOwl\Admin\Form\Buttons\Delete;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\Save;
+use SleepingOwl\Admin\Form\Buttons\SaveAndCreate;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use App\Models\Goods;
+use App\Models\KitOrder;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
-use SleepingOwl\Admin\Form\Buttons\Save;
+use SleepingOwl\Admin\Facades\Admin;
 use SleepingOwl\Admin\Form\FormElements;
 use SleepingOwl\Admin\Section;
 use Wstanley\Kitapi\KitService;
@@ -18,7 +24,7 @@ use Wstanley\Kitapi\KitService;
  *
  * @see http://sleepingowladmin.ru/docs/model_configuration_section
  */
-class KitOrder extends Section implements Initializable
+class KitOrders extends Section implements Initializable
 {
     /**
      * @see http://sleepingowladmin.ru/docs/model_configuration#ограничение-прав-доступа
@@ -47,7 +53,26 @@ class KitOrder extends Section implements Initializable
      */
     public function onDisplay()
     {
-        return $this->fireEdit($id = null);
+        $display = \AdminDisplay::datatablesAsync()
+            ->setDatatableAttributes(['bInfo' => false])
+            ->setDisplaySearch(true)->paginate(10)
+            ->setHtmlAttribute('class', 'table-info table-hover');
+
+        $display->setFilters(
+            \AdminDisplayFilter::related('datetime')
+        );
+
+        $display->setColumns([
+             \AdminColumn::datetime('datetime', 'Дата заказа')
+            ->setFormat('d.m.Y'),
+            \AdminColumn::text('goods', 'Товары'),
+            \AdminColumn::text('service', 'Доп. услуги'),
+            \AdminColumn::text('city_pickup_code', 'Откуда'),
+            \AdminColumn::text('city_delivery_code', 'Куда'),
+            \AdminColumn::text('cargo_number', 'Номер заказа'),
+        ]);
+
+        return $display;
     }
 
     /**
@@ -57,52 +82,48 @@ class KitOrder extends Section implements Initializable
      */
     public function onEdit($id)
     {
-        $service = new KitService();
+        $mOrder = KitOrder::findOrFail($id);
 
+        $service = new KitService();
         $cities = $service->cityTdd()->cities();
 
         $form = \AdminForm::form()->setHtmlAttribute('class', 'panel panel-default');
 
         $form->setElements(
             [
-                new FormElements(['<div class="text-center lead">Расчет стоимости</div>']),
+                new FormElements(['<div class="text-center lead">Оформление заказа от ' . $mOrder->datetime . '</div>']),
                 \AdminFormElement::columns()
                     ->addColumn(function () use ($cities) {
                         return [
-                            \AdminFormElement::select('city_pickup_code', 'откуда', $cities),
+                            \AdminFormElement::select('city_pickup_code', 'Откуда', $cities),
+                            \AdminFormElement::select('city_delivery_code', 'Куда', $cities),
                         ];
                     })
-                    ->addColumn(function () use ($cities) {
+                    ->addColumn(function () use ($mOrder) {
                         return [
-                            \AdminFormElement::select('city_delivery_code', 'откуда', $cities),
+                            new FormElements(['<div class="text-center lead">Товар в заказе</div><br>' . $mOrder->goods])
                         ];
                     }),
-                new FormElements(['<hr><div class="text-center lead">Укажите параметры мест</div>']),
-                \AdminFormElement::columns()
-                    ->addColumn([
-                        \AdminFormElement::multiselect('service[]', '', $this->service())
-                    ]),
-                new FormElements(['<hr><div class="text-center lead">Данные по отправлению</div>']),
-                \AdminDisplay::datatablesAsync()->setModelClass(Goods::class)
-                    ->setColumns([
-                        \AdminColumn::custom('№',function( )use (&$i) {return ++$i;}),
-                        \AdminColumn::text('brand', 'Бренд'),
-                        \AdminColumn::text('products', 'Товары'),
-                        \AdminColumn::text('price', 'Цена'),
-                        \AdminColumn::custom('Отправитель', function () { $this->sender(); } ),
-                        \AdminColumn::custom('Заказчик', function () { $this->customer(); }),
-                        \AdminColumn::custom('Получатель', function () { $this->receiver(); }),
-                    ])
+                new FormElements(['<div class="text-center lead">Дополнительные услуги</div>']),
+                \AdminFormElement::multiselect('service[]', '', $this->service()),
+                new FormElements(['<div class="text-center lead">Здесь будет выбор заказчика отправителя и получателя</div>']),
             ]
         );
 
-        $form->getButtons()->setButtons([
-            'send_order' => (new Save())->setText('отправить ордер')
-        ]);
+        $form->getButtons()->replaceButtons(
+            [
+                'delete' => null,
+                'save'   => (new Save())->setGroupElements([
+                    'save_and_create' => null,
+                    'save_and_close'  => (new SaveAndClose())->setText('Оформить и закрыть'),
+            ])->setText('Оформить'),
+                'cancel'  => (new Cancel())->setText('Отменить'),
+            ]
+        );
 
         return $form;
     }
-    
+
     //  отправляем для расчета данные
     private function order()
     {

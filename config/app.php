@@ -154,6 +154,7 @@ return [
          * SleepingOwl Service Provider
          */
         SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
+        Admin\Providers\AdminSectionsServiceProvider::class,
         /*
          * Application Service Providers...
          */
